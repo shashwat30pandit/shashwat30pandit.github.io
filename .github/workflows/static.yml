@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Videos - Padhega to Badhega</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            font-size: 2em;
+        }
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        .input-section, .video-section {
+            margin-top: 20px;
+        }
+        .video-section {
+            display: none; /* Sections hidden initially */
+        }
+        .video-section h2 {
+            color: #4CAF50;
+        }
+        .invalid-class {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<header>Padhega to Badhega</header>
+
+<div class="content">
+    <div class="input-section">
+        <h2>Enter Your Details</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br><br>
+        
+        <label for="class">Class:</label>
+        <input type="number" id="class" min="1" max="8" required><br><br>
+
+        <button onclick="showVideoSection()">Submit</button>
+    </div>
+
+    <div id="invalid-class" class="invalid-class"></div>
+
+    <!-- Sections for each class -->
+    <div id="class-1" class="video-section">
+        <h2>Class 1 Videos</h2>
+        <p>Video 1, Video 2, Video 3, etc.</p>
+    </div>
+    <div id="class-2" class="video-section">
+        <h2>Class 2 Videos</h2>
+        <p>Video 1, Video 2, Video 3, etc.</p>
+    </div>
+    <div id="class-3" class="video-section">
+        <h2>Class 3 Videos</h2>
+        <p>Video 1, Video 2, Video 3, etc.</p>
+    </div>
+    <div id="class-4" class="video-section">
+        <h2>Class 4 Videos</h2>
+        <p>Video 1, Video 2, Video 3, etc.</p>
+    </div>
+    <div id="class-5" class="video-section">
+        <h2>Class 5 Videos</h2>
+        <p>Video 1, Video 2, Video 3, etc.</p>
+    </div>
+    <div id="class-6" class="video-section">
+        <h2>Class 6 Videos</h2>
+        <p>Video 1, Video 2, Video 3, etc.</p>
+    </div>
+    <div id="class-7" class="video-section">
+        <h2>Class 7 Videos</h2>
+        <p>Video 1, Video 2, Video 3, etc.</p>
+    </div>
+    <div id="class-8" class="video-section">
+        <h2>Class 8 Videos</h2>
+        <p>Video 1, Video 2, Video 3, etc.</p>
+    </div>
+</div>
+
+<script>
+    function showVideoSection() {
+        const userClass = parseInt(document.getElementById("class").value);
+        const userName = document.getElementById("name").value.trim();
+        
+        // Hide all sections and any invalid message first
+        document.querySelectorAll('.video-section').forEach(section => section.style.display = 'none');
+        document.getElementById("invalid-class").textContent = '';
+
+        // Validate the class
+        if (userClass >= 1 && userClass <= 8 && userName !== '') {
+            // Show the selected class section
+            document.getElementById(`class-${userClass}`).style.display = 'block';
+            alert(`Welcome, ${userName}! Here are your videos for Class ${userClass}.`);
+        } else if (userClass > 8) {
+            // Show invalid message if class is above 8
+            document.getElementById("invalid-class").textContent = "Invalid Class! Only classes 1 to 8 are available.";
+        } else {
+            // Prompt to enter a valid name or class
+            alert("Please enter a valid name and class.");
+        }
+    }
+</script>
+
+</body>
+</html>
